@@ -12,6 +12,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -36,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
         Intent bluetoothIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
         startActivityForResult(bluetoothIntent, 0);
 
-        bluetoothAdapter.startDiscovery();
-
+        String pairingRequest = "android.bluetooth.device.action.PAIRING_REQUEST";
         registerReceiver(bluetoothDeviceFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+        bluetoothAdapter.startDiscovery();
 
     }
 
-    private final BroadcastReceiver bluetoothDeviceFoundReceiver = new BluetoothDeviceFoundReceiver() {
+    public final BroadcastReceiver bluetoothDeviceFoundReceiver = new BluetoothDeviceFoundReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -50,8 +51,25 @@ public class MainActivity extends AppCompatActivity {
             Log.d("bluetooth", action);
             if(BluetoothDevice.ACTION_FOUND.equals(action)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                device.createBond();
                 bluetoothArrayAdapter.add(device.getName() + " " + device.getAddress());
                 bluetoothArrayAdapter.notifyDataSetChanged();
+
+                //get pin to be entered
+                int pin = intent.getIntExtra("android.bluetooth.device.extra.PAIRING_KEY", 0);
+                Log.d("bluetooth", "Pin is " + pin);
+                Log.d("bluetooth", "Bounded " + device.getName());
+
+                byte[] pinBytes;
+
+                try {
+                    pinBytes = ("" + pin).getBytes("UTF-8");
+                    device.setPin(pinBytes);
+                    device.setPairingConfirmation(true);
+                }
+                catch(IOException e) {
+                    Log.d("bluetooth", "unhandled IOException");
+                }
             }
         }
     };
