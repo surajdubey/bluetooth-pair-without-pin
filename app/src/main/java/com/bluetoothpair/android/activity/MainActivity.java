@@ -1,4 +1,4 @@
-package com.bluetoothpair.android;
+package com.bluetoothpair.android.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.bluetoothpair.android.R;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
