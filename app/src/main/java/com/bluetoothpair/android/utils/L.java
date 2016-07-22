@@ -7,7 +7,11 @@ import android.util.Log;
  */
 public class L {
     private static String LOGCAT_KEY = "bluetooth_pin";
-    public static void debug(String message) {
+    public static void d(String message) {
         Log.d(LOGCAT_KEY, message);
     }
+    public static void e(String message) {
+        Log.e(LOGCAT_KEY, message);
+    }
+
 }
