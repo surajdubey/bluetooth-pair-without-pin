@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.bluetoothpair.android.ApiEndpoint;
-import com.bluetoothpair.android.activity.MainActivity;
+import com.bluetoothpair.android.activity.BluetoothPairActivity;
 import com.bluetoothpair.android.model.UserSignup;
 import com.bluetoothpair.android.model.UserSignupResponse;
 import com.bluetoothpair.android.utils.PreferenceUtil;
@@ -47,7 +47,7 @@ public class SignupController {
                     PreferenceUtil prefernceUtil = new PreferenceUtil(context);
                     prefernceUtil.setAccessToken(signupResponse.getAccess_token());
 
-                    Intent intent = new Intent(context, MainActivity.class);
+                    Intent intent = new Intent(context, BluetoothPairActivity.class);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 } else {

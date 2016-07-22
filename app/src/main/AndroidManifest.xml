@@ -22,7 +22,7 @@
                 <action android:name="android.bluetooth.device.action.PAIRING_CANCEL" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.BluetoothPairActivity" />
         <activity android:name=".activity.SignupActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.BluetoothPairActivity"></activity>

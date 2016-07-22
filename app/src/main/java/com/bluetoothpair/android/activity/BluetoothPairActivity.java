@@ -21,9 +21,7 @@ import com.bluetoothpair.android.model.UserRegistrationResponse;
 import com.bluetoothpair.android.utils.L;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Set;
 
 public class BluetoothPairActivity extends AppCompatActivity {
 
@@ -38,7 +36,7 @@ public class BluetoothPairActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_bluetooth_pair);
 
         bluetoothDeviceList = (ListView) findViewById(R.id.bluetoothDeviceList);
         bluetoothArrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1);

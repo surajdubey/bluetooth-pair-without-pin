@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.bluetoothpair.android.ApiEndpoint;
-import com.bluetoothpair.android.activity.MainActivity;
+import com.bluetoothpair.android.activity.BluetoothPairActivity;
 import com.bluetoothpair.android.model.UserLogin;
 import com.bluetoothpair.android.model.UserLoginResponse;
 import com.bluetoothpair.android.utils.PreferenceUtil;
 import com.bluetoothpair.android.utils.RetrofitUtil;
-
-import java.security.cert.CertPathBuilderSpi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +43,7 @@ public class LoginController {
                     PreferenceUtil preferenceUtil = new PreferenceUtil(context);
                     preferenceUtil.setAccessToken(loginResponse.getAccess_token());
 
-                    Intent intent = new Intent(context, MainActivity.class);
+                    Intent intent = new Intent(context, BluetoothPairActivity.class);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 } else {

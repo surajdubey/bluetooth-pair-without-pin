@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
         } else {
             //Navigate to signup page
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, BluetoothPairActivity.class);
             startActivity(intent);
         }
 

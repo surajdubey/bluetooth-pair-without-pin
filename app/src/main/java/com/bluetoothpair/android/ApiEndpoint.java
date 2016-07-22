@@ -2,6 +2,8 @@ package com.bluetoothpair.android;
 
 import com.bluetoothpair.android.model.UserLogin;
 import com.bluetoothpair.android.model.UserLoginResponse;
+import com.bluetoothpair.android.model.UserRegistration;
+import com.bluetoothpair.android.model.UserRegistrationRequest;
 import com.bluetoothpair.android.model.UserRegistrationResponse;
 import com.bluetoothpair.android.model.UserSignup;
 import com.bluetoothpair.android.model.UserSignupResponse;
@@ -24,5 +26,5 @@ public interface ApiEndpoint {
 
     @POST("checkUserRegistration")
     Call<UserRegistrationResponse> checkUserRegistration(@Header("access_token") String accessToken,
-                                                         @Body String username);
+                                                         @Body UserRegistrationRequest userRegistrationRequest);
 }
